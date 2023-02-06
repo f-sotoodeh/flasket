@@ -6,6 +6,8 @@ from extensions import db
 
 class User(db.Document, UserMixin):
     username = db.StringField()
+    fname = db.StringField()
+    lname = db.StringField()
     password = db.StringField()
     meta = dict(
         indexes='username'.split(),

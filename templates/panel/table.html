@@ -1,0 +1,15 @@
+{% extends 'panel/base.html' %}
+
+
+{% block content %}
+{{ table }}
+{% if pages %}
+{% for page in pages %}
+{% if page == current_page %}
+{{ page }}
+{% else %}
+{{ page }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}

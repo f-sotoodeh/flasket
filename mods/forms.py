@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
-from wt_forms import *
+from wtforms import *
 
 
-class Post(FlaskForm):
-    title = StringField()
-    summary = TextAreaField()
-    text = TextAreaField()
+# class Post(FlaskForm):
+#     title = StringField()
+#     summary = TextAreaField()
+#     text = TextAreaField()
