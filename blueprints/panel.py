@@ -34,3 +34,31 @@ def table_get(model_name, page_number=1):
         current_page = page_number,
     )
     return render_template('panel/table.html', **data)
+
+@bp.get('/f/<model_name>/<_id>/')
+def form_get(model_name, _id):
+    """
+    """
+    if _id == 'new':
+        form = getattr(forms, model_name.capitalize())()
+    else:
+        obj = getattr(models, model_name.capitalize()).objects.get(id=_id)
+        form = getattr(forms, model_name.capitalize())(obj=obj)
+    data = pack(
+        page_name = getattr(farsi, model_name.capitalize()),
+        form = form,
+    )
+    return render_template('panel/form.html', **data)
+
+@bp.post('/f/<model_name>/<_id>/')
+def form_post(model_name, _id):
+    """
+    """
+    form = getattr(forms, model_name.capitalize())(request.form)
+    if request.form and form.validate():
+        for field in form._fields.values():
+            # field,name
+            # field.data
+            pass
+    return redirect(url_for('panel.table_get', model_name=model_name))
+
