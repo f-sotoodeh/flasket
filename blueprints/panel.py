@@ -55,10 +55,15 @@ def form_post(model_name, _id):
     """
     """
     form = getattr(forms, model_name.capitalize())(request.form)
+    model = getattr(models, model_name.capitalize())
     if request.form and form.validate():
+        data = dict()
         for field in form._fields.values():
-            # field,name
-            # field.data
-            pass
+            if field.name != 'csrf_token':
+                data[field.name] = field.data
+        if _id == 'new':
+            model(**data).save()
+        else:
+            model.objects.get(id=_id).update(**data)
     return redirect(url_for('panel.table_get', model_name=model_name))
 
