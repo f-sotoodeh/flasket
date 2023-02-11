@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for, jsonify
 
 from mods import farsi, forms, models, tables, utils
 from settings import SITE_NAME
@@ -15,7 +15,6 @@ def pack(**kw):
 
 def paginate(count, page_size, page_number):
     return []
-
 
 @bp.get('/t/<model_name>/')
 @bp.get('/t/<model_name>/page_number/')
@@ -46,7 +45,9 @@ def form_get(model_name, _id):
         form = getattr(forms, model_name.capitalize())(obj=obj)
     data = pack(
         page_name = getattr(farsi, model_name.capitalize()),
+        model_name = model_name,
         form = form,
+        _id = _id,
     )
     return render_template('panel/form.html', **data)
 
@@ -66,4 +67,12 @@ def form_post(model_name, _id):
         else:
             model.objects.get(id=_id).update(**data)
     return redirect(url_for('panel.table_get', model_name=model_name))
+
+@bp.delete('/f/<model_name>/<_id>/')
+def form_delete(model_name, _id):
+    """
+    """
+    model = getattr(models, model_name.capitalize())
+    model.objects.get(id=_id).delete()
+    return jsonify()
 

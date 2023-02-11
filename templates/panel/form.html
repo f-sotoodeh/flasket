@@ -10,5 +10,21 @@
         {{ field }}
     {% endfor %}
     <button type="submit">Save</button>
+    {% if _id != 'new' %}
+    <button type="button" onclick="del();">Delete</button>
+    {% endif %}
 </form>
+
+<script type="text/javascript">
+    function del() {
+        $.ajax({
+            url: '/panel/f/{{ model_name }}/{{ _id }}',
+            type: 'DELETE',
+            success: function(data) {
+                window.location='/panel/t/{{ model_name }}/';
+            },
+        });
+        console.log(id);
+    }
+</script>
 {% endblock %}
