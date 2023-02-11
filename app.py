@@ -3,6 +3,7 @@ from flask import Flask
 from blueprints.panel import bp as panel
 from blueprints.public import bp as public
 from extensions import db, login
+from mods.utils import _
 
 
 # INITIALIZE APP #
@@ -15,7 +16,12 @@ login.init_app(app)
 app.register_blueprint(panel, url_prefix='/panel')
 app.register_blueprint(public)
 
-# ADD JINJA FILTERS #
+# ADD FILTERS TO JINJA ENVIRONMENT
+app.jinja_env.lstrip_blocks = True
+app.jinja_env.trim_blocks = True
+app.jinja_env.filters.update(
+    translate=_,
+)
 
 # USER LOADER #
 @login.user_loader

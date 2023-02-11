@@ -1,5 +1,7 @@
 from flask_table import Table, Col
 
+from mods.utils import _
+
 
 class Ftable(Table):
     no_items = 'هیچی'
@@ -12,6 +14,6 @@ class Ftable(Table):
 
 
 class User(Ftable):
-    fname = Col('نام')
-    lname = Col('فامیل')
-    username = Col('نام کاربری')
+    fname = Col(_('fname'))
+    lname = Col(_('lname'))
+    username = Col(_('username'))

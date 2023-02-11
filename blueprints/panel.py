@@ -1,19 +1,24 @@
 from flask import Blueprint, redirect, render_template, request, url_for, jsonify
 
-from mods import farsi, forms, menus, models, tables, utils
-from settings import SITE_NAME
+from mods import forms, menus, models, tables, utils
+from mods.utils import _
+from settings import APP_TITLE
 
 bp = Blueprint('panel', __name__)
 PAGE_SIZE = 15
 
 def pack(**kw):
+    link, family, direction = utils.get_language_settings()
     return dict(
+        language_font_link = link,
+        language_font_family = family,
         menu = menus.create_menu(
             [], # models
             [], # empty
             menus.user_menu,
         ),
-        site_name = SITE_NAME,
+        site_title = APP_TITLE,
+        direction = direction,
         **kw,
     )
 
@@ -31,7 +36,7 @@ def table_get(model_name, page_number=1):
     table = getattr(tables, model_name.capitalize())(objects)
     table = tables.User(objects)
     data = pack(
-        page_name = getattr(farsi, model_name.capitalize()+'s'),
+        page_name = _(model_name.capitalize()+'s'),
         pages = paginate(objects.count(), PAGE_SIZE, page_number),
         current_page = page_number,
         model_name = model_name,
@@ -49,7 +54,7 @@ def form_get(model_name, _id):
         obj = getattr(models, model_name.capitalize()).objects.get(id=_id)
         form = getattr(forms, model_name.capitalize())(obj=obj)
     data = pack(
-        page_name = getattr(farsi, model_name.capitalize()),
+        page_name = _(model_name.capitalize()),
         model_name = model_name,
         form = form,
         _id = _id,

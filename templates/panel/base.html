@@ -5,20 +5,20 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    {{ language_font_link | safe }}
     <style>
         h1, h2, h3, h4, h5, h6,
         body, div, p, a, span,
         button, input, select, textarea{
-            font-family: Vazirmatn, sans-serif !important;
+            font-family: "{{ language_font_family }}", sans-serif !important;
         }
     </style>
     <title>
-        {{ page_name }} | {{ site_name }}
+        {{ page_name }} | {{ site_title }}
     </title>
 </head>
 
-<body dir="rtl" style="background-color: #BFECEA;">
+<body dir="{{ direction }}" style="background-color: #BFECEA;">
 {# menu_(menu) #}
 <div class="ui container" style="padding-top: 3rem;">
 {% block content %}{% endblock %}
