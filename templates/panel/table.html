@@ -2,14 +2,29 @@
 
 
 {% block content %}
-{{ table }}
-{% if pages %}
-{% for page in pages %}
-{% if page == current_page %}
-{{ page }}
-{% else %}
-{{ page }}
-{% endif %}
-{% endfor %}
-{% endif %}
+<div class="ui segment">
+    <div class="ui grid">
+        <div class="ui eight wide column">
+            <h1>
+                <span class="ui grey small header">{{ page_name }}</span>
+            </h1>
+        </div>
+        <div class="ui eight wide column">
+            <a class="ui left floated teal icon button" href="/panel/f/{{ model_name }}/new/">
+                <i class="ui plus icon"></i>
+            </a>
+        </div>
+    </div>
+    {{ table }}
+    {% if pages %}
+        {% for page in pages %}
+            {% if page == current_page %}
+                {{ page }}
+            {% else %}
+                {{ page }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
 {% endblock %}
+    

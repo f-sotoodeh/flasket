@@ -3,7 +3,7 @@ from flask_table import Table, Col
 
 class Ftable(Table):
     no_items = 'هیچی'
-
+    classes = 'ui selectable right aligned table'.split()
     @classmethod
     def get_tr_attrs(cls, item):
         return dict(
@@ -12,6 +12,6 @@ class Ftable(Table):
 
 
 class User(Ftable):
-    username = Col('نام کاربری')
     fname = Col('نام')
     lname = Col('فامیل')
+    username = Col('نام کاربری')

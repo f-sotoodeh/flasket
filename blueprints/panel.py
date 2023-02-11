@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, url_for, jsonify
 
-from mods import farsi, forms, models, tables, utils
+from mods import farsi, forms, menus, models, tables, utils
 from settings import SITE_NAME
 
 bp = Blueprint('panel', __name__)
@@ -8,7 +8,11 @@ PAGE_SIZE = 15
 
 def pack(**kw):
     return dict(
-        menu = dict(),
+        menu = menus.create_menu(
+            [], # models
+            [], # empty
+            menus.user_menu,
+        ),
         site_name = SITE_NAME,
         **kw,
     )
@@ -28,9 +32,10 @@ def table_get(model_name, page_number=1):
     table = tables.User(objects)
     data = pack(
         page_name = getattr(farsi, model_name.capitalize()+'s'),
-        table = table,
         pages = paginate(objects.count(), PAGE_SIZE, page_number),
         current_page = page_number,
+        model_name = model_name,
+        table = table,
     )
     return render_template('panel/table.html', **data)
 
