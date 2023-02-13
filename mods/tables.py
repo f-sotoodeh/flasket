@@ -1,11 +1,13 @@
 from flask_table import Table, Col
 
-from mods.utils import _
+from mods.utils import _, get_language_settings
 
 
 class Ftable(Table):
     no_items = 'هیچی'
-    classes = 'ui selectable right aligned table'.split()
+    _, _, direction = get_language_settings()
+    alignment = 'right aligned' if direction == 'rtl' else ''
+    classes = f'ui selectable {alignment} table'.split()
     @classmethod
     def get_tr_attrs(cls, item):
         return dict(

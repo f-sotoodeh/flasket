@@ -26,10 +26,11 @@ def paginate(count, page_size, page_number):
     return []
 
 @bp.get('/t/<model_name>/')
-@bp.get('/t/<model_name>/page_number/')
+@bp.get('/t/<model_name>/<page_number>/')
 def table_get(model_name, page_number=1):
     """
     """
+    page_number = int(page_number)
     model = getattr(models, model_name.capitalize())
     objects = model.objects
     objects = objects.skip((page_number-1)*PAGE_SIZE).limit(PAGE_SIZE)

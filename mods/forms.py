@@ -2,6 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import *
 from wtforms.validators import InputRequired
 
+from mods.utils import _
+
+
 class User(FlaskForm):
-    fname = StringField('نام', validators=[InputRequired()])
-    lname = TextAreaField('فامیل')
+    fname = StringField(_('fname'), validators=[InputRequired()])
+    lname = TextAreaField(_('lname'))

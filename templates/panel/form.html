@@ -10,7 +10,7 @@
             </h1>
         </div>
         <div class="ui eight wide column">
-            <a class="ui left floated icon button" href="/panel/t/{{ model_name }}/">
+            <a class="ui {{ 'left' if direction=='rtl' else 'right' }} floated icon button" href="/panel/t/{{ model_name }}/">
                 <i class="ui left arrow icon"></i>
             </a>
         </div>
@@ -24,10 +24,10 @@
                 {{ field }}
             </div>
         {% endfor %}
+        <button class="ui {{ 'left' if direction=='rtl' else 'right' }} floated teal button" type="submit">{{ 'Save' | translate }}</button>
         {% if _id != 'new' %}
-            <button class="ui left floated orange button" type="button" onclick="del();">{{ 'Delete' | translate }}</button>
+            <button class="ui {{ 'left' if direction=='rtl' else 'right' }} floated orange button" type="button" onclick="del();">{{ 'Delete' | translate }}</button>
         {% endif %}
-        <button class="ui left floated teal button" type="submit">{{ 'Save' | translate }}</button>
     </form>
 </div>
 
