@@ -1,18 +1,27 @@
-{% macro menu_(main_menu, user_menu, direction) %}
+{% macro menu_(main_menu, user_menu, model_name, direction) %}
+
 <div class="ui borderless fixed menu">
     <div class="ui container">
+        <a class="icon item" href="/panel/dashboard" style="padding-top: 0; padding-bottom: 0;">
+            <i class="ui large teal feather alternate icon"></i>
+        </a>
         {% for item in main_menu %}
-            <a class="{{'active' if 'page_type'=='k' else ''}} item" href="{{ item.href }}">
+            <a class="{{'active' if model_name==item.name else ''}} item" href="{{ item.href }}">
                 {{ item.title }}
             </a>
         {% endfor %}
 
         <div class="{{ 'left' if direction=='rtl' else 'right' }} menu">
-            {% for item in user_menu %}
-                <a class="{{'active' if 'page_type'=='k' else ''}} item" href="{{ item.href }}">
-                    {{ item.title }}
-                </a>
-            {% endfor %}
+            <div class="ui dropdown icon item" style="padding-top: 0; padding-bottom: 0;">
+                <i class="ui teal large user circle icon"></i>
+                <div class="menu">
+                    {% for item in user_menu %}
+                        <a class="{{'active' if 'page_type'=='k' else ''}} item" href="{{ item.href }}">
+                            {{ item.title }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>

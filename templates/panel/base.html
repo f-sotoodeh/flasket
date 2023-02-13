@@ -34,10 +34,13 @@
 </head>
 
 <body dir="{{ direction }}">
-    {{ menu_(main_menu, user_menu, direction) }}
-    <div class="ui container" style="padding-top: 5rem;">
+    {{ menu_(main_menu, user_menu, model_name, direction) }}
+    <div class="ui container" style="padding-top: 4.5rem;">
         {% block content %}{% endblock %}
     </div>
     {{ footer_(direction) }}
+    <script>
+        $('.ui.dropdown').dropdown();
+    </script>
 </body>
 </html>

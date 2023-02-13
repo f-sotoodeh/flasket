@@ -5,6 +5,9 @@ robo = 'روبو'
 link = 'لینک'
 flasket_docs = 'مستندات فلسکت'
 
+logout = 'خروج'
+profile = 'پروفایل'
+
 save = 'بفرمیو'
 delete = 'بپاکیو'
 

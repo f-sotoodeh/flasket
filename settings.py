@@ -1,10 +1,14 @@
 from os import getenv
 
 
-APP_TITLE = 'سایت آزمایشی'
-
 # Avalable languages: farsi, arabic, english
 LANGUAGE = 'farsi'
+
+APP_TITLE = dict(
+    farsi = 'سایت آزمایشی',
+    arabic = 'اختبار الموقع',
+    english = 'Test website',
+)[LANGUAGE]
 
 
 APP_NAME = 'flasket'

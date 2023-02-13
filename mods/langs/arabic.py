@@ -6,6 +6,8 @@ robo = 'روبو'
 link = 'لینک'
 flasket_docs = 'مستندات الفلسکت'
 
+logout = 'خروج'
+profile = 'الملف الشخصي'
 
 save = 'يحفظ'
 delete = 'يمسح'
