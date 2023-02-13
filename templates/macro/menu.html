@@ -1,3 +1,19 @@
-{% macro menu_(menu) %}
+{% macro menu_(main_menu, user_menu, direction) %}
+<div class="ui borderless fixed menu">
+    <div class="ui container">
+        {% for item in main_menu %}
+            <a class="{{'active' if 'page_type'=='k' else ''}} item" href="{{ item.href }}">
+                {{ item.title }}
+            </a>
+        {% endfor %}
 
+        <div class="{{ 'left' if direction=='rtl' else 'right' }} menu">
+            {% for item in user_menu %}
+                <a class="{{'active' if 'page_type'=='k' else ''}} item" href="{{ item.href }}">
+                    {{ item.title }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endmacro %}

@@ -1,4 +1,10 @@
 
+made_with = 'ساخته شده با'
+by = 'توسط'
+robo = 'روبو'
+link = 'لینک'
+flasket_docs = 'مستندات فلسکت'
+
 save = 'بفرمیو'
 delete = 'بپاکیو'
 

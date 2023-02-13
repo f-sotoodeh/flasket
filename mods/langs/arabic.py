@@ -1,4 +1,12 @@
 
+
+made_with = 'مصنوع من'
+by = 'بواسطة'
+robo = 'روبو'
+link = 'لینک'
+flasket_docs = 'مستندات الفلسکت'
+
+
 save = 'يحفظ'
 delete = 'يمسح'
 

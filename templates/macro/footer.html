@@ -1,0 +1,29 @@
+{% macro footer_(direction) %}
+<div class="ui vertical footer segment" dir="ltr" style="background-color: teal;">
+    <div class="ui container">
+        <div class="ui grid" dir="{{ direction }}">
+            <div class="eight wide column">
+                <a href="https://flasket.ir">
+                    <span class="ui text" style="color: #BFECEA;">
+                        {{ 'flasket_docs' | translate }}
+                    </span>
+                </a>
+            </div>
+            <div class="{{ 'left' if direction=='rtl' else 'right' }} aligned eight wide column">
+                <span class="ui text" style="color: #BFECEA;">
+                    {{ 'MADE_WITH' | translate }} 
+                    <i class="ui heart icon" style="color: #fff;"></i>
+                    {{ 'BY' | translate }}
+                    <a href="https://robolink.io">
+                        <span class="ui text" style="color: #BFECEA;">
+                            <span style="font-weight: 700;">
+                                {{ 'ROBO' | translate }}</span><span style="font-weight: 100;">{{ 'LINK' | translate }}
+                            </span>
+                        </span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

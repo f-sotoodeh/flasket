@@ -12,11 +12,8 @@ def pack(**kw):
     return dict(
         language_font_link = link,
         language_font_family = family,
-        menu = menus.create_menu(
-            [], # models
-            [], # empty
-            menus.user_menu,
-        ),
+        main_menu = menus.model_to_menu(models.User),
+        user_menu = menus.user_menu,
         site_title = APP_TITLE,
         direction = direction,
         **kw,
