@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.2/dist/semantic.min.js"></script>
+    {{ language_font_link | safe }}
+    <title>
+        {{ page_name }} | {{ site_title }}
+    </title>
+    <style type="text/css">
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 100vh;
+            margin-left: 0 !important;
+            background-color: #BFECEA;
+        }
+        .footer {
+            margin-top: auto !important;
+        }
+        
+        body>.grid {
+            height: 100%;
+        }
+        
+        .image {
+            margin-top: -6rem;
+        }
+        
+        .column {
+            max-width: 30rem;
+        }
+
+        .tab.segment {
+            border: 0 !important;
+            padding: .2em;
+        }
+
+        p,
+        a,
+        h1,
+        div,
+        span,
+        input,
+        button {
+            font-family: "{{ language_font_family }}", sans-serif !important;
+            text-align: {{ 'right !important' if direction=='rtl' else 'left' }};
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="ui center aligned stackable grid">
+        
+        <div class="ui seven wide middle aligned center aligned column">
+            <div class="ui basic segment">
+                <center>
+                    <i class="ui disabled huge teal feather alternate icon"></i>
+                    <h1 class="ui teal header" style="text-align: center !important;">{{ site_title }}</h1>
+                </center>
+            </div>
+            <form class="ui large form " action="/login/" method="POST" role="form">
+                <!-- { form.csrf_token } -->
+                <!-- Username or Email field -->
+                <div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="ui disabled grey user icon"></i>
+                            <!--  -->
+                            <input type="text" name="username" placeholder="{{ 'username' | translate }}" autocomplete="off">
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="ui disabled grey lock icon"></i>
+                            <!--  -->
+                            <input type="password" name="password" placeholder="{{ 'password' | translate }}" autocomplete="off">
+                        </div>
+                    </div>
+                    <!-- <div class="field" style="text-align:left;">
+                        <div class="ui checkbox">
+                            <input type="checkbox" name="remember">
+                            <label><span class="ui grey text">Remember me</span></label>
+                        </div>
+                    </div> -->
+                    <input class="ui {{ 'left floated' if direction=='rtl' else 'right floated' }} teal large submit button" type="submit" value="{{ 'login' | translate }}">
+                    <!--  -->
+                </div>
+                <div class="ui error message"></div>
+            </form>
+            {% if message %}
+            <div class="ui negative message" style="margin-top: 3.8em;">
+                <p>{{ message|safe }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="ui vertical footer basic segment">
+        <center>
+            <a href="https://flasket.ir"><span class="ui teal text">{{ 'powered_by_flasket' | translate }}</span></a>
+        </center>
+    </div>
+</body>
+
+</html>
