@@ -15,7 +15,8 @@ class Ftable(Table):
         )
 
 
-class User(Ftable):
+class Super_user(Ftable):
     fname = Col(_('fname'))
     lname = Col(_('lname'))
+    email = Col(_('email'))
     username = Col(_('username'))

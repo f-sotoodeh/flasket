@@ -2,7 +2,7 @@
 
 <div class="ui borderless fixed menu">
     <div class="ui container">
-        <a class="icon item" href="/panel/dashboard" style="padding-top: 0; padding-bottom: 0;">
+        <a class="icon item" href="/panel/" style="padding-top: 0; padding-bottom: 0;">
             <i class="ui large teal feather alternate icon"></i>
         </a>
         {% for item in main_menu %}
@@ -16,7 +16,7 @@
                 <i class="ui teal large user circle icon"></i>
                 <div class="menu">
                     {% for item in user_menu %}
-                        <a class="{{'active' if 'page_type'=='k' else ''}} item" href="{{ item.href }}">
+                        <a class="item" href="{{ item.href }}">
                             {{ item.title }}
                         </a>
                     {% endfor %}

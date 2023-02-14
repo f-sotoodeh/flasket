@@ -4,8 +4,9 @@ from flask_login import UserMixin
 from extensions import db
 
 
-class User(db.Document, UserMixin):
+class Super_user(db.Document, UserMixin):
     username = db.StringField()
+    email = db.StringField()
     fname = db.StringField()
     lname = db.StringField()
     password = db.StringField()
@@ -19,11 +20,3 @@ class User(db.Document, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
     
-
-class Post(db.Document):
-    title = db.StringField()
-    summary = db.StringField()
-    text = db.StringField()
-    author = db.StringField()
-    datetime = db.DateTimeField()
-

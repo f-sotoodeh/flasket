@@ -12,7 +12,7 @@ def pack(**kw):
     return dict(
         language_font_link = link,
         language_font_family = family,
-        main_menu = menus.model_to_menu(models.User),
+        main_menu = menus.model_to_menu(models.Super_user),
         user_menu = menus.user_menu,
         site_title = APP_TITLE,
         direction = direction,
@@ -21,6 +21,19 @@ def pack(**kw):
 
 def paginate(count, page_size, page_number):
     return []
+
+
+@bp.get('/login/')
+def login():
+    data = pack(
+        page_name = _('Login'),
+    )
+    return render_template('panel/login.html', **data)
+
+@bp.get('/')
+def dashboard():
+    data = pack()
+    return render_template('panel/dashboard.html', **data)
 
 @bp.get('/t/<model_name>/')
 @bp.get('/t/<model_name>/<page_number>/')
@@ -32,7 +45,6 @@ def table_get(model_name, page_number=1):
     objects = model.objects
     objects = objects.skip((page_number-1)*PAGE_SIZE).limit(PAGE_SIZE)
     table = getattr(tables, model_name.capitalize())(objects)
-    table = tables.User(objects)
     data = pack(
         page_name = _(model_name.capitalize()+'s'),
         pages = paginate(objects.count(), PAGE_SIZE, page_number),
