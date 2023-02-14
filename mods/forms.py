@@ -9,3 +9,4 @@ class Super_user(FlaskForm):
     fname = StringField(_('fname'), validators=[InputRequired()])
     lname = TextAreaField(_('lname'))
     username = StringField(_('username'), validators=[InputRequired()])
+    deletable = False

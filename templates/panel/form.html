@@ -25,7 +25,7 @@
             </div>
         {% endfor %}
         <button class="ui {{ 'left' if direction=='rtl' else 'right' }} floated teal button" type="submit">{{ 'Save' | translate }}</button>
-        {% if _id != 'new' %}
+        {% if form.deletable and _id!='new' %}
             <button class="ui {{ 'left' if direction=='rtl' else 'right' }} floated orange button" type="button" onclick="del();">{{ 'Delete' | translate }}</button>
         {% endif %}
     </form>
