@@ -9,10 +9,14 @@ powered_by_flasket = 'با افتخار طراحی شده بر پایه فلسک
 
 username = 'نام کاربری'
 password = 'گذرواژه'
+remember_me = 'مرا به خاطر بسپار'
 login = 'ورود'
 
 logout = 'خروج'
 profile = 'پروفایل'
+
+invalid_request = 'درخواست نامعتبر است.'
+wrong_credentials = 'نام کاربری و گذرواژه خود را بررسی کنید.'
 
 save = 'بفرمیو'
 delete = 'بپاکیو'

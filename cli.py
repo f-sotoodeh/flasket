@@ -16,8 +16,7 @@ def create_superuser(**kw):
     if SuperUser.objects(email=kw.get('email')):
         return 'Email already exists!'
     kw['password'] = models.Super_user.hash_password(kw.pop('password'))
-    superuser = SuperUser(**kw)
-    superuser.save()
+    SuperUser(**kw).save()
 
 def main():
     print('Create a new super user')

@@ -54,7 +54,7 @@
     </style>
 </head>
 
-<body>
+<body dir="{{ direction }}">
     <div class="ui center aligned stackable grid">
         
         <div class="ui seven wide middle aligned center aligned column">
@@ -64,7 +64,7 @@
                     <h1 class="ui teal header" style="text-align: center !important;">{{ site_title }}</h1>
                 </center>
             </div>
-            <form class="ui large form " action="" method="POST">
+            <form class="ui large form " action="/panel/login/" method="POST">
                 {{ form.csrf_token }}
                 <div>
                     <div class="field">
@@ -80,20 +80,20 @@
                             {{ form.password(placeholder=form.password.label.text, autocomplete="off") }}
                         </div>
                     </div>
-                    <!-- <div class="field" style="text-align:left;">
+                    <div class="field">
                         <div class="ui checkbox">
                             <input type="checkbox" name="remember">
-                            <label><span class="ui grey text">Remember me</span></label>
+                            <label><span class="ui grey text">{{ form.remember.label.text }}</span></label>
                         </div>
-                    </div> -->
+                    </div>
                     <input class="ui {{ 'left floated' if direction=='rtl' else 'right floated' }} teal large submit button" type="submit" value="{{ 'login' | translate }}">
                     <!--  -->
                 </div>
                 <div class="ui error message"></div>
             </form>
             {% if message %}
-            <div class="ui negative message" style="margin-top: 3.8em;">
-                <p>{{ message|safe }}</p>
+            <div class="ui negative message" style="margin-top: 5.2em;">
+                <p>{{ message }}</p>
             </div>
             {% endif %}
         </div>

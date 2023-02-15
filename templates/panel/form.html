@@ -37,10 +37,11 @@
             url: '/panel/f/{{ model_name }}/{{ _id }}',
             type: 'DELETE',
             success: function(data) {
-                window.location='/panel/t/{{ model_name }}/';
+                if(data.success) {
+                    window.location='/panel/t/{{ model_name }}/';
+                }
             },
         });
-        console.log(id);
     }
 </script>
 {% endblock %}

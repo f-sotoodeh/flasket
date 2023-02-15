@@ -18,14 +18,23 @@
         {% endif %}
     </div>
     {{ table }}
+    <!--  -->
     {% if pages %}
-        {% for page in pages %}
-            {% if page == current_page %}
-                {{ page }}
-            {% else %}
-                {{ page }}
-            {% endif %}
-        {% endfor %}
+    <center>
+        <div class="ui secondary pagination menu">
+            {% for i in pages %}
+                {% if i=='…' %}
+                <a class="disabled item">…</a>
+                {% else %}
+                <a class="{{'active' if page_number==i else ''}} item"
+                    href="/panel/t/{{ model_name }}/{{ i }}/"
+                >
+                    {{ i | translate }}
+                </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </center>
     {% endif %}
 </div>
 {% endblock %}

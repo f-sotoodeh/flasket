@@ -15,6 +15,12 @@ class Super_user(FlaskForm):
 class Login(FlaskForm):
     username = StringField(_('username'))
     password = PasswordField(_('password'))
+    remember = BooleanField(_('remember_me'))
+
+
+class Profile(FlaskForm):
+    fname = StringField(_('fname'))
+    deletable = False
 
 
 class Article(FlaskForm):

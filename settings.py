@@ -3,6 +3,8 @@ from os import getenv
 
 # Avalable languages: farsi, arabic, english
 LANGUAGE = 'farsi'
+TABLE_SIZE = 10
+MENU = ['article', 'super_user']
 
 APP_NAME = 'flasket'
 APP_TITLE = dict(
