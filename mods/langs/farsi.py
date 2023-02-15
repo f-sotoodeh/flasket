@@ -23,3 +23,9 @@ lname = 'فامیل'
 super_user = 'مدیر'
 super_users = 'مدیرها'
 
+article = 'مقاله'
+articles = 'مقاله‌ها'
+
+title = 'عنوان'
+summary = 'چکیده'
+body = 'متن'

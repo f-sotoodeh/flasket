@@ -3,8 +3,8 @@ from flask import Flask
 from blueprints.panel import bp as panel
 from blueprints.public import bp as public
 from extensions import db, login
+from mods.models import Super_user
 from mods.utils import _
-
 
 # INITIALIZE APP #
 app = Flask(__name__)
@@ -24,6 +24,10 @@ app.jinja_env.filters.update(
 )
 
 # USER LOADER #
+login.login_view = '/panel/login/'
 @login.user_loader
-def load_user():
-    pass
+def load_user(_id):
+    try:
+        return Super_user.objects.get(id=_id)
+    except Exception as e:
+        print(f'Can not load user: {_id}, Error: {e}')

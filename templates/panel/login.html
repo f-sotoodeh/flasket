@@ -64,23 +64,20 @@
                     <h1 class="ui teal header" style="text-align: center !important;">{{ site_title }}</h1>
                 </center>
             </div>
-            <form class="ui large form " action="/login/" method="POST" role="form">
-                <!-- { form.csrf_token } -->
-                <!-- Username or Email field -->
+            <form class="ui large form " action="" method="POST">
+                {{ form.csrf_token }}
                 <div>
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="ui disabled grey user icon"></i>
-                            <!--  -->
-                            <input type="text" name="username" placeholder="{{ 'username' | translate }}" autocomplete="off">
+                            {{ form.username(placeholder=form.username.label.text, autocomplete="off") }}
                         </div>
                     </div>
                     <!--  -->
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="ui disabled grey lock icon"></i>
-                            <!--  -->
-                            <input type="password" name="password" placeholder="{{ 'password' | translate }}" autocomplete="off">
+                            {{ form.password(placeholder=form.password.label.text, autocomplete="off") }}
                         </div>
                     </div>
                     <!-- <div class="field" style="text-align:left;">

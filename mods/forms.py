@@ -10,3 +10,16 @@ class Super_user(FlaskForm):
     lname = TextAreaField(_('lname'))
     username = StringField(_('username'), validators=[InputRequired()])
     deletable = False
+
+
+class Login(FlaskForm):
+    username = StringField(_('username'))
+    password = PasswordField(_('password'))
+
+
+class Article(FlaskForm):
+    title = StringField(_('title'))
+    summary = TextAreaField(_('summary'))
+    body = TextAreaField(_('body'))
+    deletable = True
+

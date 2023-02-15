@@ -21,3 +21,5 @@ class Super_user(Ftable):
     username = Col(_('username'))
     creatable = False
 
+class Article(Ftable):
+    title = Col(_('title'))

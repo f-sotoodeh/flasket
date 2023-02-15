@@ -14,9 +14,16 @@ class Super_user(db.Document, UserMixin):
         indexes='username'.split(),
     )
 
-    def set_password(self, password):
-        self.update(password=generate_password_hash(password, method='sha256'))
+    @staticmethod
+    def hash_password(password):
+        return generate_password_hash(password, method='sha256')
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+    
+
+class Article(db.Document):
+    title = db.StringField()
+    summary = db.StringField()
+    body = db.StringField()
     
