@@ -35,7 +35,7 @@
 
 <body dir="{{ direction }}">
     {{ menu_(main_menu, user_menu, model_name, direction) }}
-    <div class="ui container" style="padding-top: 4.5rem;">
+    <div class="ui container" style="padding-top: 4.5rem; padding-bottom: 1.5rem;">
         {% block content %}{% endblock %}
     </div>
     {{ footer_(direction) }}
